@@ -20,19 +20,19 @@
 
 - type: entity
   parent: BaseHandheldInstrument
-  id: MarpetInstrument
-  name: mar-pet
-  description: A shadowkin had too much time on their hands when they made this.
+  id: marmonicaInstrument
+  name: marmonica
+  description: We don't know what that black-eye was thinking when they named it, but by the dark does it mar.
   components:
   - type: Instrument
     program: 6
     bank: 1
   - type: Sprite
-    sprite: _Omu/Objects/Fun/Instruments/wehpet.rsi
+    sprite: _Omu/Objects/Fun/Instruments/marmonica.rsi
     state: icon
   - type: Item
     size: Normal
-    sprite: _Omu/Objects/Fun/Instruments/wehpet.rsi
+    sprite: _Omu/Objects/Fun/Instruments/marmonica.rsi
     storedRotation: -90
   - type: Tag
     tags:
