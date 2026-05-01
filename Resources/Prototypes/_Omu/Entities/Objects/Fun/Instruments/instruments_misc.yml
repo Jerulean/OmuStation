@@ -20,7 +20,7 @@
 
 - type: entity
   parent: BaseHandheldInstrument
-  id: marmonicaInstrument
+  id: MarmonicaInstrument
   name: marmonica
   description: We don't know what that black-eye was thinking when they named it, but by the dark does it mar.
   components:
