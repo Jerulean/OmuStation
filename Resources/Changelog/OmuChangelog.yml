@@ -3677,3 +3677,11 @@ Entries:
       message: Plague mice now only spawn from mouse migration events.
   id: 473
   time: '2026-05-04T10:22:15.0000000+00:00'
+- author: Kazuno-dev
+  changes:
+    - type: Fix
+      message: >-
+        Fixed CentComm PDAs (and those parented from it) being unable to use
+        nanochat
+  id: 474
+  time: '2026-05-04T14:23:11.0000000+00:00'
