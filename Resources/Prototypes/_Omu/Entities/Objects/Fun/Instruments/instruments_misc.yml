@@ -22,7 +22,7 @@
   parent: BaseHandheldInstrument
   id: MarmonicaInstrument
   name: marmonica
-  description: We don't know what that black-eye was thinking when they named it, but by the dark does it mar.
+  description: We don't know what that black-eye was thinking when they made it, but by the dark does it mar.
   components:
   - type: Instrument
     program: 6
