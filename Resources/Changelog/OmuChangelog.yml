@@ -3932,3 +3932,9 @@ Entries:
       message: Feroxi sprites on the customization screen fixed
   id: 498
   time: '2026-05-10T00:20:11.0000000+00:00'
+- author: PickelSilly
+  changes:
+    - type: Add
+      message: Added Squibbo's "Extermination" artwork to the lobby art rotation!
+  id: 499
+  time: '2026-05-10T00:24:18.0000000+00:00'
