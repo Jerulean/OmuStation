@@ -12,6 +12,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <cc:CommandButton Command="startround" Text="{Loc administration-ui-round-tab-start-round}" />
         <cc:CommandButton Command="endround" Text="{Loc administration-ui-round-tab-end-round}" />
         <cc:CommandButton Command="restartround" Text="{Loc administration-ui-round-tab-restart-round}" />
-        <cc:CommandButton Command="restartroundnow" Text="{Loc administration-ui-round-tab-restart-round-now}" />
+        <cc:SafetyCommandButton Command="restartroundnow" Text="{Loc administration-ui-round-tab-restart-round-now}" />
     </GridContainer>
 </Control>
