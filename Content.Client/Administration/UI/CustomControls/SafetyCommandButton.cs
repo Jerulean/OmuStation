@@ -1,13 +1,36 @@
-﻿namespace Content.Client.Administration.UI.CustomControls
+﻿using System.Runtime.CompilerServices;
+
+namespace Content.Client.Administration.UI.CustomControls
 {
     public sealed class SafetyCommandButton : CommandButton
     {
         private TimeSpan? DeleteResetOn { get; set; }
         private string? OriginalText { get; set; }
 
+        public SafetyCommandButton()
+        {
+            OnPressed -= Execute;
+            OnPressed += SafetyPress;
+            OriginalText = Text;
+        }
+        protected void SafetyPress(ButtonEventArgs obj)
+        {
+            Text = Loc.GetString("administration-ui-round-tab-confirm");
+            ModulateSelfOverride = Color.Red;
+
+            OnPressed += Execute;
+            OnPressed -= SafetyPress;
+        }
+
+        // Should be the action of the superclass,
+        // firing after the safety.
         protected override void Execute(ButtonEventArgs obj)
         {
-            ModulateSelfOverride = Color.Red;
+            OnPressed -= Execute;
+            OnPressed += SafetyPress;
+
+            Text = OriginalText;
+            ModulateSelfOverride = null;
             base.Execute(obj);
         }
     }
