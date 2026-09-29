@@ -11,10 +11,10 @@ namespace Content.Client.Administration.UI.CustomControls
         {
             OnPressed -= Execute;
             OnPressed += SafetyPress;
-            OriginalText = Text;
         }
         protected void SafetyPress(ButtonEventArgs obj)
         {
+            OriginalText = Text;
             Text = Loc.GetString("administration-ui-round-tab-confirm");
             ModulateSelfOverride = Color.Red;
 
