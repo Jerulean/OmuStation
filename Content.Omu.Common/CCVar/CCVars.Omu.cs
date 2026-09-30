@@ -19,4 +19,10 @@ public sealed partial class OmuCVars
 
     public static readonly CVarDef<bool> AlternateJobTitles =
         CVarDef.Create("omu.alternate_job_titles", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Station radio music volume.
+    /// </summary>
+    public static readonly CVarDef<float> RadioMusicVolume =
+        CVarDef.Create("omu.ambience.radio_music_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
 }

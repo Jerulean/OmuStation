@@ -74,6 +74,9 @@ public sealed partial class AudioTab : Control
             SliderHighlightVolume,
             scale: 1f);
 
+        // Omu - radio station volume
+        // Control.AddOptionPercentSlider()
+
         Control.AddOptionSlider(
             CCVars.MaxAmbientSources,
             SliderMaxAmbienceSounds,
