@@ -24,5 +24,5 @@ public sealed partial class OmuCVars
     ///     Station radio music volume.
     /// </summary>
     public static readonly CVarDef<float> RadioMusicVolume =
-        CVarDef.Create("omu.ambience.radio_music_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
+        CVarDef.Create("omu.ambience.radio_music_volume", 1f, CVar.ARCHIVE | CVar.CLIENTONLY);
 }

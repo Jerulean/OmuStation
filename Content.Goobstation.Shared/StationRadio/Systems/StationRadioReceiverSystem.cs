@@ -1,14 +1,17 @@
 using Content.Goobstation.Shared.StationRadio.Components;
 using Content.Goobstation.Shared.StationRadio.Events;
+using Content.Omu.Common.CCVar;
 using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 
 namespace Content.Goobstation.Shared.StationRadio.Systems;
 
 public sealed class StationRadioReceiverSystem : EntitySystem
 {
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
     public override void Initialize()
@@ -23,16 +26,16 @@ public sealed class StationRadioReceiverSystem : EntitySystem
     private void OnPowerChanged(EntityUid uid, StationRadioReceiverComponent comp, PowerChangedEvent args)
     {
         if(comp.SoundEntity != null && args.Powered)
-            _audio.SetGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
+            SetAdjustedGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
         else if(comp.SoundEntity != null)
-            _audio.SetGain(comp.SoundEntity, 0);
+            SetAdjustedGain(comp.SoundEntity, 0);
     }
 
     private void OnRadioToggle(EntityUid uid, StationRadioReceiverComponent comp, ActivateInWorldEvent args)
     {
         comp.Active = !comp.Active;
         if (comp.SoundEntity != null && _power.IsPowered(uid))
-            _audio.SetGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
+            SetAdjustedGain(comp.SoundEntity, comp.Active ? comp.DefaultParams.Volume : 0f);
     }
 
     private void OnMediaPlayed(EntityUid uid, StationRadioReceiverComponent comp, StationRadioMediaPlayedEvent args)
@@ -43,7 +46,7 @@ public sealed class StationRadioReceiverSystem : EntitySystem
         else if (audio != null && !_power.IsPowered(uid) || !comp.Active && audio != null)
         {
             comp.SoundEntity = audio.Value.Entity;
-            _audio.SetGain(comp.SoundEntity, 0);
+            SetAdjustedGain(comp.SoundEntity, 0);
         }
     }
 
@@ -53,5 +56,12 @@ public sealed class StationRadioReceiverSystem : EntitySystem
             return;
 
         comp.SoundEntity = _audio.Stop(comp.SoundEntity);
+    }
+
+    private void SetAdjustedGain(EntityUid? soundEntity, float baseGain)
+    {
+        // var clientRadioVolume = _cfg.GetCVar(OmuCVars.RadioMusicVolume);
+        // _audio.SetGain(soundEntity, baseGain * clientRadioVolume);
+        _audio.SetGain(soundEntity, baseGain);
     }
 }
